@@ -1,0 +1,20 @@
+;; -*- bytes dynamic-lisp guile languages -*-
+
+;; name project: guile-money
+;; name program: money
+;; func program: cash
+
+;; gnu hack: GNU Guile Cash (Cash Reference Manual)
+;; ninja: stream roku films
+;; ninja: canview
+
+
+;; start file
+;; stream roku ninja films
+
+(setq trees '((pine . cones) (oak . acorns) (maple . seeds)))
+(assoc 'oak trees)
+(cdr (assoc 'oak trees))
+(assoc 'birch trees)
+
+     

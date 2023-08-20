@@ -1,0 +1,226 @@
+;; +*- bytes dynamic-lisp guile languages lisp -*-
+
+;; name project: guile-moeny
+;; name program: money
+;; func program: setting-constant
+
+;; gnu hack: GNU Guile Setting Constant (Setting Constant Reference Manual
+;; buffer: full stream
+;; stream: roku films
+;; lisp: languages
+
+;; changes: needs
+;; topic: rules takes
+;; goods: views bread
+
+;; start file
+;; stream roku films
+
+(cons 'foo())           ; Emphasize the empty list; 
+
+;; packages foo nil
+(booleanp 'foo)
+
+;; 1.3.3 Evaluation Notation
+
+;; A Lisp expression that you can evaluate is called a form. Ev;;; aluating a form always produces a result, which is a Lisp obj;; ect. In the examples in this manual, this is indicated with ‘;; ⇒’:
+
+"?\C-d"
+
+
+
+;; 1.3.4 Printing Notation
+
+;; Many of the examples in this manual print text when they are ;; evaluated. If you execute example code in a Lisp Interaction ;; buffer (such as the buffer *scratch*) by typing C-j after the;;  closing parenthesis of the example, the printed text is inse;; rted into the buffer. If you execute the example by other mea;; ns (such as by evaluating the function eval-region), the prin;; ted text is displayed in the echo area.
+
+;; Examples in this manual indicate printed text with ‘-|’, irre;; spective of where that text goes. The value returned by evalu;; ating the form follows on a separate line with ‘⇒’.
+
+(progn (prin1 'foo) (princ "\n") (prin1 'bar))
+;;    -| foo
+;;     -| bar
+;;     ⇒ bar
+
+;; 1.3.6 Buffer Text Notation
+
+;; Some examples describe modifications to the contents of a buf;; fer, by showing the before and after versions of the text. Th;; ese examples show the contents of the buffer in question betw;; een two lines of dashes containing the buffer name. In additi;; on, ‘∗’ indicates the location of point. (The symbol for poin;; t, of course, is not part of the text in the buffer; it indic;; ates the place between two characters where point is currentl;; y located.)
+
+;; ---------- Buffer: foo ----------
+;; This is the ∗contents of foo.
+;; ---------- Buffer: foo ----------
+
+(insert "changed ")
+
+;;     ⇒ nil
+;; ---------- Buffer: foo ----------
+;; This is the changed ∗contents of foo.
+;; ---------- Buffer: foo ----------
+
+(defvar format-descriptions
+  1312
+  "1.3.7 Format of Descriptions
+
+Functions, variables, macros, commands, user options, and special forms are described in this manual in a uniform format. The first line of a description contains the name of the item followed by its arguments, if any. The category—function, variable, or whatever—appears at the beginning of the line. The description follows on succeeding lines, sometimes with examples.
+
+    A Sample Function Description
+    A Sample Variable Description")
+
+
+;; Function: foo integer1 &optional integer2 &rest integers ¶
+
+;; The function foo subtracts integer1 from integer2, then adds ;; all the rest of the arguments to the result. If integer2 is n;; ot supplied, then the number 19 is used by default.
+
+`(foo 1 2 3 4 5)
+`(foo 4)
+;; More generally,
+`(foo w x y ...)
+`(+ (- x w) y ...)
+
+;; 1.3.7.2 A Sample Variable Description
+
+;; A variable is a name that can be bound (or set) to an object.;;  The object to which a variable is bound is called a value; w;; e say also that variable holds that value. Although nearly al;; l variables can be set by the user, certain variables exist s;; pecifically so that users can change them; these are called u;; ser options. Ordinary variables and user options are describe;; d using a format like that for functions, except that there a;; re no arguments.
+
+;; Here is a description of the imaginary electric-future-map va;; riable.
+
+;; Variable: electric-future-map ¶
+
+;;     The value of this variable is a full keymap used by Elect;; ric Command Future mode. The functions in this map allow you ;; to edit commands you have not yet thought about executing. 
+
+;; User option descriptions have the same format, but ‘Variable’;;  is replaced by ‘User Option’.
+
+
+"`User Option`"
+
+
+;; 1.4 Version Information
+
+;; These facilities provide information about which version of E;; macs is in use.
+
+;; Command: emacs-version &optional here ¶
+
+;; This function returns a string describing the version of Emac;; s that is running. It is useful to include this string in bug;;  reports.
+
+(emacs-version)
+
+;; Variable: emacs-build-time ¶
+
+;; The value of this variable indicates the time at which Emacs ;; was built. It uses the style of current-time (see Time of Day;; ), or is nil if the information is not available.
+
+emacs-build-time
+
+;; 2.2 Special Read Syntax
+
+;; Emacs Lisp represents many special objects and constructs via;; special hash notations.
+
+"‘#<…>’"
+
+;;    Objects that have no read syntax are presented like this (;; see Printed Representation and Read Syntax).
+
+"‘##’"
+
+;;    The printed representation of an interned symbol whose nam;; e is an empty string (see Symbol Type).
+
+"‘#'’"
+
+;;    This is a shortcut for function, see Anonymous Functions.
+
+"‘#:’"
+
+;;    The printed representation of an uninterned symbol whose n;; ame is foo is ‘#:foo’ (see Symbol Type).
+
+"‘#N’"
+
+;; When printing circular structures, this construct is used to ;; represent where the structure loops back onto itself, and ‘N’;; is the starting list count:
+
+(let ((a (list 1)))
+  (setcdr a a))
+
+"‘#N=’"
+
+"‘#N#’"
+
+"‘#N=’"
+
+;; gives the name to an object, and ‘#N#’ represents that object;; , so when reading back the object, they will be the same obje;; ct instead of copies (see Read Syntax for Circular Objects).
+
+"‘#xN’"
+
+"‘N’"
+
+;; represented as a hexadecimal number (‘#x2a’).
+
+"‘#oN’"
+
+"‘N’"
+
+;; represented as an octal number (‘#o52’).
+
+"‘#bN’"
+
+"‘N’"
+;; represented as a binary number (‘#b101010’).
+
+"‘#(…)’"
+
+;;    String text properties (see Text Properties in Strings).
+
+"‘#^’"
+
+;;    A char table (see Char-Table Type).
+
+"‘#s(hash-table …)’"
+
+;;    A hash table (see Hash Table Type).
+
+"‘?C’"
+
+;;    A character (see Basic Char Syntax).
+
+"‘#$’"
+
+;;    The current file name in byte-compiled files (see Document;; ation Strings and Compilation). This is not meant to be used ;; in Emacs Lisp source files.
+
+"‘#@N’"
+
+;;    Skip the next ‘N’ characters (see Comments). This is used ;; in byte-compiled files, and is not meant to be used in Emacs ;; Lisp source files.
+
+"‘#f’"
+
+;; Indicates that the following form isn’t readable by the Emacs;; Lisp reader. This is only in text for display purposes (when ;; that would look prettier than alternative ways of indicating ;; an unreadable form) and will never appear in any Lisp file.
+
+;; 2.3 Comments
+
+;; A comment is text that is written in a program only for the s;; ake of humans that read the program, and that has no effect o;; n the meaning of the program. In Lisp, an unescaped semicolon;;  (‘;’) starts a comment if it is not within a string or chara;; cter constant. The comment continues to the end of line. The ;; Lisp reader discards comments; they do not become part of the;; Lisp objects which represent the program within the Lisp syst;; em.
+
+"‘#@count’"
+
+;; The ‘#@count’ construct, which skips the next count character;; s, is useful for program-generated comments containing binary;; data. The Emacs Lisp byte compiler uses this in its output fi;; les (see Byte Compilation). It isn’t meant for source files, ;; however.
+
+;; See Tips on Writing Comments, for conventions for formatting ;; comments.
+
+;; 17.1 Performance of Byte-Compiled Code
+
+;; A byte-compiled function is not as efficient as a primitive f;; unction written in C, but runs much faster than the version w;; ritten in Lisp. Here is an example:
+
+(defun silly-loop (n)
+  "Return the time, in seconds, to run N iterations of a loop."
+  (let ((t1 (float-time)))
+    (while (> (setq n (1- n)) 0))
+    (- (float-time) t1)))
+;; ⇒ silly-loop
+
+(silly-loop 50000000)
+;; ⇒ 5.200886011123657
+
+(byte-compile 'silly-loop)
+;; ⇒ [Compiled code not shown]
+
+(silly-loop 50000000)
+;;
+
+;; ⇒ 0.6239290237426758
+
+
+
+
+
+

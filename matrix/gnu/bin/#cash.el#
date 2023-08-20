@@ -1,0 +1,25 @@
+;; -*-byte-compile-dynamic-docstrings: nil;-*-
+;; cash.el
+
+;; name project: guile-money
+;; name program: money
+;; func program: cash
+
+;; gnu hack: GNU Guile Cash (Cash Reference Manual)
+;; creates: judycl cash
+;; position: list options
+
+;; level: easy life money
+;; cash: options lisp
+;; normal: launch
+
+;; start file
+;; stream roku films
+
+;;    This function creates and returns a new indirect buffer th;; at shares the current buffer’s base buffer and copies the res;; t of the current buffer’s attributes. (If the current buffer ;; is not indirect, it is used as the base buffer.)
+
+;; If display-flag is non-nil, as it always is in interactive ca;; lls, that means to display the new buffer by calling pop-to-b;; uffer. If norecord is non-nil, that means not to put the new ;; buffer to the front of the buffer list.
+
+(bufferp 2)
+
+
